@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 import os
 import sys
 import json
@@ -12,7 +11,7 @@ from PIL import Image, ImageDraw, ImageFont
 import pystray
 import queue
 
-# --- CONFIGURACIÓN ---
+
 APPS_FILE = "apps.json"
 ICON_FILE = "icon.png"
 
@@ -32,7 +31,7 @@ class AppLauncher:
         self.root.withdraw()
         self.gui_window = None
 
-    # --- Lógica de la Aplicación ---
+
 
     def _load_apps(self):
         if not os.path.exists(APPS_FILE): return []
@@ -57,7 +56,7 @@ class AppLauncher:
         except Exception as e:
             self.queue_action('show_error', "Error al lanzar", f"Error al lanzar '{app_name}':\n{e}")
 
-    # --- Comunicación Segura entre Hilos ---
+
 
     def queue_action(self, action_type, *args):
         self.gui_queue.put((action_type, args))
@@ -78,7 +77,7 @@ class AppLauncher:
         if self.is_running:
             self.root.after(100, self.process_gui_queue)
 
-    # --- Hilo de pystray ---
+
 
     def _run_tray_icon(self):
         create_default_icon_if_needed()
@@ -144,7 +143,7 @@ class AppLauncher:
         self.gui_window.geometry("700x450")
         self.gui_window.protocol("WM_DELETE_WINDOW", self.gui_window.withdraw)
         
-        # Variable para mantener el estado de la selección de forma más fiable
+
         current_selection_index = None
 
         main_frame = ttk.Frame(self.gui_window, padding="10")
@@ -182,7 +181,7 @@ class AppLauncher:
         button_frame = ttk.Frame(main_frame)
         button_frame.pack(fill="x", pady="10")
 
-        # --- Lógica interna de la GUI (Corregida y Robusta) ---
+    
         def refresh_listbox():
             nonlocal current_selection_index
             apps = self._load_apps()
@@ -190,13 +189,12 @@ class AppLauncher:
             for app in apps:
                 listbox.insert(tk.END, app['name'])
             clear_entries()
-            current_selection_index = None # Resetear selección
-
+            current_selection_index = None 
         def clear_entries():
             nonlocal current_selection_index
             name_entry.delete(0, tk.END); params_entry.delete(0, tk.END)
             listbox.selection_clear(0, tk.END)
-            current_selection_index = None # Resetear selección
+            current_selection_index = None 
 
         def on_app_select(event):
             nonlocal current_selection_index
@@ -209,7 +207,7 @@ class AppLauncher:
             apps = self._load_apps()
             app = apps[current_selection_index]
             
-            # Limpiar y rellenar los campos de edición
+         
             name_entry.delete(0, tk.END)
             params_entry.delete(0, tk.END)
             name_entry.insert(0, app.get('name', ''))
