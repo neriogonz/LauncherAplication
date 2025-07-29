@@ -1,0 +1,32 @@
+[
+    {
+        "name": "Bloc de Notas",
+        "path": "C:\\Windows\\System32\\notepad.exe",
+        "params": ""
+    },
+    {
+        "name": "Calculadora",
+        "path": "C:\\Windows\\System32\\calc.exe",
+        "params": ""
+    },
+    {
+        "name": "Abrir Carpeta de Proyectos",
+        "path": "C:\\Windows\\explorer.exe",
+        "params": "C:\\ruta\\a\\tus\\proyectos"
+    },
+    {
+        "name": "Abrir Carpeta de Proyectos",
+        "path": "C:\\Windows\\explorer.exe",
+        "params": "C:\\ruta\\a\\tus\\proyectos"
+    },
+    {
+        "name": "Abrir Carpeta de Proyectos",
+        "path": "C:\\Windows\\explorer.exe",
+        "params": "C:\\ruta\\a\\tus\\proyectos"
+    },
+    {
+        "name": "brave",
+        "path": "C:\\Program Files\\BraveSoftware\\Brave-Browser\\Application\\brave.exe",
+        "params": ""
+    }
+]
