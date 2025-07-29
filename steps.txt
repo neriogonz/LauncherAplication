@@ -1,0 +1,58 @@
+Cómo Crear un Entorno Virtual de Python
+Usar un entorno virtual es la mejor práctica para cualquier proyecto de Python. Aísla las dependencias de tu proyecto de la instalación global de Python, previniendo conflictos entre diferentes proyectos.
+
+Aquí tienes los pasos para crear y activar uno usando el módulo venv, que viene incluido con Python.
+
+Paso 1: Abre tu Terminal
+Abre tu interfaz de línea de comandos.
+
+En Windows: Abre el Símbolo del sistema (cmd) o PowerShell.
+
+En macOS/Linux: Abre la aplicación Terminal.
+
+Paso 2: Navega a la Carpeta de tu Proyecto
+Usa el comando cd (cambiar directorio) para moverte a la carpeta donde quieres crear tu proyecto. Si la carpeta no existe, puedes crearla primero (mkdir Proyecto lanzador python).
+
+# Ejemplo
+cd ruta/al/proyecto
+
+Paso 3: Crea el Entorno Virtual
+Una vez que estés dentro de la carpeta de tu proyecto, ejecuta el siguiente comando. Esto le indica a Python que ejecute el módulo venv y cree un nuevo entorno dentro de una carpeta llamada venv.
+
+# Comando general
+python -m venv venv
+
+Nota: En algunos sistemas, puede que necesites usar python3 en lugar de python.
+
+Ahora verás una nueva carpeta llamada venv dentro de tu directorio de proyecto.
+
+Paso 4: Activa el Entorno Virtual
+Este es el paso más importante. Activar el entorno le dice a tu terminal que use el intérprete de Python y los paquetes instalados dentro de la carpeta venv, no los globales. El comando es diferente para Windows y macOS/Linux.
+
+En Windows (Símbolo del sistema / PowerShell):
+
+.\venv\Scripts\activate
+
+En macOS / Linux:
+
+source venv/bin/activate
+
+Después de ejecutar el comando, verás (venv) al principio de la línea de la terminal, confirmando que el entorno está activo.
+
+Paso 5: Instalar Dependencias del Proyecto
+Con el entorno virtual activo, instala las librerías que nuestra aplicación necesita para funcionar. Copia y pega el siguiente comando en tu terminal y presiona Enter.
+
+pip install pystray pillow
+
+Este comando instalará:
+
+pystray: La librería para crear el ícono en la bandeja del sistema.
+
+pillow: Una librería para manejar imágenes, que es requerida por pystray.
+
+Paso 6: Desactivar el Entorno
+Cuando hayas terminado de trabajar en tu proyecto (por ejemplo, al final del día), puedes desactivar el entorno simplemente escribiendo:
+
+deactivate
+
+Recuerda volver a activarlo (Paso 4) la próxima vez que quieras ejecutar o trabajar en tu aplicación.
