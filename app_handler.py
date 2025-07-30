@@ -5,16 +5,16 @@ import os
 import tkinter as tk
 from tkinter import messagebox
 
-# Constante para el nombre del archivo de base de datos
+
 APPS_FILE = "apps.json"
 
-# Diccionario para mantener un registro de los procesos en ejecución
+
 running_processes = {}
 
 def show_error_popup(title, message):
    
     root = tk.Tk()
-    root.withdraw()  # Ocultamos la ventana raíz principal
+    root.withdraw() 
     messagebox.showerror(title, message)
     root.destroy()
 
