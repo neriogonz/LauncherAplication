@@ -3,19 +3,16 @@ from tkinter import ttk, messagebox, filedialog
 import app_handler as handler
 
 class GuiManager(tk.Toplevel):
-    """
-    Clase para la ventana de gestión de aplicaciones.
-    Hereda de Toplevel para ser una ventana secundaria.
-    """
+    
     def __init__(self, master):
         super().__init__(master)
         self.title("Gestionar Aplicaciones")
         self.geometry("700x500")
         
-        # Cargar las aplicaciones al iniciar
+       
         self.apps = handler.load_apps()
 
-        # Configurar la ventana para que al cerrar solo se oculte
+       
         self.protocol("WM_DELETE_WINDOW", self.withdraw)
 
         self._setup_widgets()
@@ -26,7 +23,7 @@ class GuiManager(tk.Toplevel):
         main_frame = ttk.Frame(self, padding="10")
         main_frame.pack(fill="both", expand=True)
 
-        # --- Frame de la Lista de Aplicaciones ---
+     
         list_frame = ttk.LabelFrame(main_frame, text="Aplicaciones Registradas", padding="10")
         list_frame.pack(fill="both", expand=True, pady=5)
 
@@ -42,7 +39,7 @@ class GuiManager(tk.Toplevel):
         form_frame = ttk.LabelFrame(main_frame, text="Detalles de la Aplicación", padding="10")
         form_frame.pack(fill="x", pady=5)
 
-        # Widgets del formulario
+
         ttk.Label(form_frame, text="Nombre:").grid(row=0, column=0, padx=5, pady=5, sticky="w")
         self.name_entry = ttk.Entry(form_frame, width=50)
         self.name_entry.grid(row=0, column=1, padx=5, pady=5, sticky="ew")
@@ -60,7 +57,6 @@ class GuiManager(tk.Toplevel):
         
         form_frame.columnconfigure(1, weight=1)
 
-        # --- Frame de los Botones de Acción ---
         button_frame = ttk.Frame(main_frame)
         button_frame.pack(fill="x", pady="10")
 
@@ -88,10 +84,7 @@ class GuiManager(tk.Toplevel):
         self.app_listbox.selection_clear(0, tk.END)
 
     def _on_app_select(self, event):
-        """
-        Se ejecuta cuando se selecciona un item en el listbox.
-        Rellena los campos del formulario con los datos de la app seleccionada.
-        """
+       
         selected_indices = self.app_listbox.curselection()
         if not selected_indices:
             return
@@ -105,7 +98,7 @@ class GuiManager(tk.Toplevel):
         self.params_entry.insert(0, app.get('params', ''))
 
     def _browse_file(self):
-        """Abre un diálogo para seleccionar un archivo ejecutable."""
+       
         filepath = filedialog.askopenfilename(
             title="Seleccionar ejecutable",
             filetypes=(("Ejecutables", "*.exe"), ("Todos los archivos", "*.*"))
@@ -115,7 +108,7 @@ class GuiManager(tk.Toplevel):
             self.path_entry.insert(0, filepath)
 
     def _add_app(self):
-        """Añade una nueva aplicación a la lista."""
+       
         name = self.name_entry.get().strip()
         path = self.path_entry.get().strip()
 
